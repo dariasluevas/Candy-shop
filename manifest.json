@@ -1,0 +1,22 @@
+{
+  "name": "Candy Shop",
+  "short_name": "CandyShop",
+  "description": "Ягодные букеты, торты, клубника в шоколаде. Неописуемое удовольствие.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FFF9FB",
+  "theme_color": "#ff6b9d",
+  "icons": [
+    {
+      "src": "./logo1.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait-primary",
+  "related_applications": [
+    {
+      "platform": "web"
+    }
+  ]
+}

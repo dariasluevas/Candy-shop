@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Shop</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="container">
+            <span class="logo">Candy Shop</span>
+            <nav>
+                <ul>
+                    <li class="active"><a href="index.html">О нас</a></li>
+                    <li><a href="tovar.html">Наши товары</a></li>
+                    <li><a href="korz.html">Корп. клиентам</a></li>
+
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero container">
+            <div class="hero--info">
+                <h2>Рекомендуем</h2>
+                <h1>Молочный шоколад с фисташковой начинкой</h1>
+                <p>Продукт произведен по авторскому рецепту. Состав: молочный бельгийский шоколад Callebaut, натуральная
+                    фисташковая паста, дробленая фисташка, декор из цветной глазури.</p>
+                <button class="btn">Сделать заказ</button>
+            </div>
+            <img src="img/choco.jpg" alt="">
+        </div>
+
+        <div class="container trending">
+            <h3>Что мы изготавливаем:</h3>
+
+            <div class="products">
+                <div class="block">
+                    <img src="img/strawb.png" alt="">
+                    <span>Клубника в молочном шоколаде</span>
+                </div>
+                <div class="block">
+                    <img src="img/cake.png" alt="">
+                    <span>Бисквитные и муссовые торты</span>
+                </div>
+                <div class="block">
+                    <img src="img/byket.png" alt="">
+                    <span>Букеты из конфет и ягод</span>
+                </div>
+                <div class="block">
+                    <img src="img/sweets.png" alt="">
+                    <span>Конфеты с различными начинками</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container big-text">
+            <p>Компания Candy Shop с 2015 года радует жителей Москвы, Санкт-Петербурга и их пригородов необычными
+                подарками из свежих ягод и бельгийского шоколада Callebaut.
+
+                В каждом городе есть свое производство, поэтому композиции из сладких и сочных ягод, изысканного
+                бельгийского шоколада будут гарантированно свежими.
+
+                Вся наша продукция создается из самых свежих и качественных ингредиентов: спелых ягод клубники (а также
+                малины, голубики, смородины, ежевики, физалиса), бельгийского шоколада Callebaut, отборных фруктов,
+                орехов и кондитерских посыпок. </p>
+        </div>
+
+        <div class="container banner">
+            <h3>Мы находимся по адресам г.Москва, ул. Дмитрия Ульянова 8А; г.Санкт-Петербург, Ленинский пр. 5</h3>
+            <p>Мы осуществляем быструю доставку в день заказа от 3-х часов по Москве и Санкт-Петербургу. Заказать
+                клубнику в шоколаде и другие лакомства можно по номеру телефона: +7 495 660-02-27.</p>
+            <img src="img/home.png" alt="">
+        </div>
+
+        <div class="container todo-section">
+            <h3>Список сладких задач</h3>
+            <p>Запланируйте свои покупки и желания!</p>
+
+            <form name="toDoForm" class="todo-form">
+                <div class="form-group">
+                    <label>Название задачи</label>
+                    <input type="text" name="title" placeholder="Например: Купить шоколадные конфеты">
+                </div>
+                <div class="form-group">
+                    <label>Цвет маркера</label>
+                    <input type="color" name="color" value="#FF6B9D">
+                </div>
+                <div class="form-group">
+                    <label>Описание</label>
+                    <textarea name="description" placeholder="Добавьте подробности..."></textarea>
+                </div>
+                <button type="button" class="btn" onclick="addToDo()">Добавить сладкую задачу</button>
+            </form>
+
+            <div id="toDoContainer" class="todo-container"></div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="blocks container">
+            <div>
+                <span class="logo">Candy Shop</span>
+                <p>Ягодные букеты, торты, клубника в шоколаде. Неописуемое удовольствие.</p>
+            </div>
+            <div>
+                <h4>Узнать больше</h4>
+                <ul>
+                    <li>История бренда</li>
+                    <li>Новости и акции</li>
+                    <li>Доставка и оплата</li>
+                    <li>Адреса магазинов</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Связаться с нами</h4>
+                <p>+7 495 660-02-27 офис</p>
+                <p>+7 495 660-54-55 интернет</p>
+                <p>info@candyshop.ru</p>
+                <p>Москва, ул. Дмитрия Ульянова, 8А</p>
+            </div>
+        </div>
+        <hr>
+        <p>2015 - 2025 © Candy Shop Клубника в шоколаде.</p>
+    </footer>
+
+    <script>
+        const todoList = [];
+        const baseTodoId = 'todoitem';
+
+        function deleteElement(id) {
+            const index = todoList.findIndex(item => item.id === id);
+            todoList.splice(index, 1);
+            document.getElementById(baseTodoId + id).remove();
+        }
+
+        function addToDo() {
+            const form = document.forms.toDoForm;
+            const newTodo = {
+                id: createNewId(),
+                title: form.elements.title.value,
+                color: form.elements.color.value,
+                description: form.elements.description.value
+            }
+            todoList.push(newTodo);
+            addToDoToHtml(newTodo);
+            form.reset();
+        }
+
+        function createNewId() {
+            return todoList.length === 0 ? 1 : Math.max(...todoList.map(todo => todo.id)) + 1;
+        }
+
+        function addToDoToHtml(newToDo) {
+            const div = document.createElement('div');
+            div.id = baseTodoId + newToDo.id;
+            div.className = 'todo-item';
+
+            div.innerHTML = `
+        <div class="todo-card">
+            <div class="todo-header" style="background-color: ${newToDo.color}"></div>
+            <div class="todo-body">
+                <h5>${newToDo.title}</h5>
+                <p>${newToDo.description}</p>
+                <button type="button" class="todo-delete" onclick="deleteElement(${newToDo.id})">
+                    Удалить
+                </button>
+            </div>
+        </div>
+    `;
+
+            document.getElementById('toDoContainer').append(div);
+        }
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
